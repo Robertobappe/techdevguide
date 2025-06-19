@@ -22,8 +22,19 @@ class BinaryTree:
             new_node.right_child = self.right_child
             self.right_child = new_node
 
+    # MÉTODOS DE TRAVESSIA DFS
+    # In-order: Esquerda -> Raiz -> Direita
+    def in_order(self) -> None:
+        if self.left_child:
+            self.left_child.in_order()
 
-    # Método auxiliar para visualizar a árvore (útil para verificar a construção)
+        print(self.value, end=" ")
+
+        if self.right_child:
+            self.right_child.in_order()
+    # The result of the in-order algorithm for this tree example is 3–2–4–1–6–5–7
+
+# Método auxiliar para visualizar a árvore (útil para verificar a construção)
     def print_tree_structure(self, level: int = 0, prefix: str = "Root: "):
         """Imprime a estrutura da árvore com indentação."""
         if self is not None:
@@ -36,6 +47,7 @@ class BinaryTree:
                 self.right_child.print_tree_structure(level + 1, "R-- ")
             else:
                 print("    " * (level + 1) + "R-- None")
+
 
     # --- BLOCO DE TESTE ---
 
@@ -68,3 +80,10 @@ if node_5:
 # Opcional: Visualize a estrutura da árvore para confirmar que foi construída corretamente
 print("--- Estrutura da Árvore Construída ---")
 root.print_tree_structure()
+
+# 4. Teste o método in_order
+print("\n--- Testando a Travessia In-order ---")
+print("Ordem In-order (Esquerda, Raiz, Direita):")
+root.in_order()
+print() # Adiciona uma nova linha para formatar a saída
+# Saída esperada para in-order: 3 2 4 1 6 5 7

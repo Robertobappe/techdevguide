@@ -22,6 +22,16 @@ class BinaryTree:
             new_node.right_child = self.right_child
             self.right_child = new_node
 
+    # MÉTODOS DE TRAVESSIA DFS
+    # Pre-order: Raiz -> Esquerda -> Direita
+    def pre_order(self) -> None:
+        print(self.value, end=" ") # Processa a raiz
+
+        if self.left_child:
+            self.left_child.pre_order() # Visita a subárvore esquerda
+        if self.right_child:
+            self.right_child.pre_order() # Visita a subárvore direita
+    # The result for this algorithm will be 1–2–3–4–5–6–7
 
     # Método auxiliar para visualizar a árvore (útil para verificar a construção)
     def print_tree_structure(self, level: int = 0, prefix: str = "Root: "):
@@ -37,7 +47,8 @@ class BinaryTree:
             else:
                 print("    " * (level + 1) + "R-- None")
 
-    # --- BLOCO DE TESTE ---
+
+# --- BLOCO DE TESTE ---
 
 # 1. Crie a raiz da árvore
 root = BinaryTree(1)
@@ -68,3 +79,10 @@ if node_5:
 # Opcional: Visualize a estrutura da árvore para confirmar que foi construída corretamente
 print("--- Estrutura da Árvore Construída ---")
 root.print_tree_structure()
+
+# 3. Teste o método pre_order
+print("\n--- Testando a Travessia Pre-order ---")
+print("Ordem Pre-order (Raiz, Esquerda, Direita):")
+root.pre_order()
+print() # Adiciona uma nova linha para formatar a saída
+# Saída esperada para pre-order: 1 2 3 4 5 6 7

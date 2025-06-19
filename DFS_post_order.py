@@ -22,8 +22,19 @@ class BinaryTree:
             new_node.right_child = self.right_child
             self.right_child = new_node
 
+    # MÉTODOS DE TRAVESSIA DFS
+    #Post-order: Esquerda -> Direita -> Raiz
+    def post_order(self) -> None:
+        if self.left_child:
+            self.left_child.post_order()
 
-    # Método auxiliar para visualizar a árvore (útil para verificar a construção)
+        if self.right_child:
+            self.right_child.post_order()
+
+        print(self.value, end=" ")
+    # The result of the post order algorithm for this tree example is 3–4–2–6–7–5–1
+
+# Método auxiliar para visualizar a árvore (útil para verificar a construção)
     def print_tree_structure(self, level: int = 0, prefix: str = "Root: "):
         """Imprime a estrutura da árvore com indentação."""
         if self is not None:
@@ -36,6 +47,7 @@ class BinaryTree:
                 self.right_child.print_tree_structure(level + 1, "R-- ")
             else:
                 print("    " * (level + 1) + "R-- None")
+
 
     # --- BLOCO DE TESTE ---
 
@@ -68,3 +80,9 @@ if node_5:
 # Opcional: Visualize a estrutura da árvore para confirmar que foi construída corretamente
 print("--- Estrutura da Árvore Construída ---")
 root.print_tree_structure()
+
+# 5. Teste o método post_order
+print("\n--- Testando a Travessia Post-order ---")
+print("Ordem Post-order (Esquerda, Direita, Raiz):")
+root.post_order()
+print() # Adiciona uma nova linha para formatar a saída
