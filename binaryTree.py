@@ -24,6 +24,23 @@ class BinaryTree:
             self.right_child = new_node
 
 
+    #TREE TRAVERSAL
+    #DEPTH-FIRST SEARCH (DFS)
+    
+    #Pre-order
+    def pre_order(self):
+        print(self.value)
+
+        if self.left_child:
+            self.left_child.pre_order()
+
+        if self.right_child:
+            self.right_child.pre_order()
+
+    # "processar" x "visita" a um nó
+    # O "processar" é quando o nó entra na sequência final da travessia. 
+    # E cada nó é processado apenas uma vez.
+
 a_node = BinaryTree('a')
 a_node.insert_left('b')
 a_node.insert_right('c')
@@ -41,6 +58,7 @@ f_node = c_node.right_child
 
 print(a_node.value) # a
 print(b_node.value) # b
+
 print(c_node.value) # c
 print(d_node.value) # d
 print(e_node.value) # e
